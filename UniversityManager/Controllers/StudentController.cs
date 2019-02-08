@@ -43,14 +43,13 @@ namespace UniversityManager.Controllers
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                students = students.Where(s => s.LastName.Contains(searchString)
-                                       || s.FirstMidName.Contains(searchString));
+                students = students.Where(s => s.Name.Contains(searchString));
             }
 
             switch (sortOrder)
             {
                 case "name_desc":
-                    students = students.OrderByDescending(s => s.LastName);
+                    students = students.OrderByDescending(s => s.Name);
                     break;
                 case "Date":
                     students = students.OrderBy(s => s.EnrollmentDate);
@@ -59,7 +58,7 @@ namespace UniversityManager.Controllers
                     students = students.OrderByDescending(s => s.EnrollmentDate);
                     break;
                 default:
-                    students = students.OrderBy(s => s.LastName);
+                    students = students.OrderBy(s => s.Name);
                     break;
             }
 
@@ -93,10 +92,11 @@ namespace UniversityManager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "LastName,FirstMidName,EnrollmentDate")] Student student)
+        public ActionResult Create([Bind(Include = "Name, Birthday")] Student student)
         {
             try
             {
+                student.EnrollmentDate = DateTime.Now;
                 if (ModelState.IsValid)
                 {
                     db.Students.Add(student);
@@ -138,7 +138,7 @@ namespace UniversityManager.Controllers
             }
             var studentToUpdate = db.Students.Find(id);
             if (TryUpdateModel(studentToUpdate, "",
-               new string[] { "LastName", "FirstMidName", "EnrollmentDate" }))
+               new string[] { "Name", "Birthday" }))
             {
                 try
                 {

@@ -28,7 +28,7 @@
     <select name="page-size-select" onchange="location = this.value;">
         @foreach (var itemPageSize in ViewBag.availablePageSizes)
         {
-            <option value="?pageSize=@itemPageSize" @(itemPageSize == ViewBag.pageSize ? "selected" : "")>@itemPageSize itens por página</option>
+            <option value="?pageSize=@itemPageSize" @(itemPageSize == ViewBag.pageSize ? "selected" : "")>@itemPageSize items per page</option>
         }
     </select>
 </div>
@@ -36,10 +36,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink("Last Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter, pageSize = ViewBag.pageSize })
-        </th>
-        <th>
-            First Name
+            @Html.ActionLink("Name", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter, pageSize = ViewBag.pageSize })
         </th>
         <th>
             @Html.ActionLink("Enrollment Date", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter, pageSize = ViewBag.pageSize })
@@ -51,18 +48,15 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstMidName)
+                @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EnrollmentDate)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.StudentID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.StudentID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.StudentID })
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
             </td>
         </tr>
     }
