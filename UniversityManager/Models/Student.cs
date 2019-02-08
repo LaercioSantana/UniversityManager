@@ -6,6 +6,8 @@ namespace UniversityManager.Models
 {
     public class Student : Person
     {
+        public int CourseID { get; set; }
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime EnrollmentDate { get; set; }

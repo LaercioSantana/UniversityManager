@@ -8,16 +8,25 @@ namespace UniversityManager.DAL
     {
         protected override void Seed(SchoolContext context)
         {
+            var courses = new List<Course>
+            {
+            new Course{ID=1, Name="Engineering"},
+            new Course{ID=2, Name="Math"},
+            new Course{ID=3, Name="English"},
+            };
+            courses.ForEach(c => context.Courses.Add(c));
+            context.SaveChanges();
+
             var students = new List<Student>
             {
-            new Student{Name="Carson Alexander",EnrollmentDate=DateTime.Parse("2005-09-01"), Birthday=DateTime.Parse("1995-09-01")},
-            new Student{Name="Meredith Alonso",EnrollmentDate=DateTime.Parse("2002-09-01"), Birthday=DateTime.Parse("1995-08-01")},
-            new Student{Name="Arturo Anand",EnrollmentDate=DateTime.Parse("2003-09-01"), Birthday=DateTime.Parse("1995-05-01")},
-            new Student{Name="Gytis Barzdukas",EnrollmentDate=DateTime.Parse("2002-09-01"), Birthday=DateTime.Parse("1993-09-01")},
-            new Student{Name="Yan Li",EnrollmentDate=DateTime.Parse("2002-09-01"), Birthday=DateTime.Parse("1992-09-01")},
-            new Student{Name="Peggy Justice",EnrollmentDate=DateTime.Parse("2001-09-01"), Birthday=DateTime.Parse("1999-09-07")},
-            new Student{Name="Laura Norman",EnrollmentDate=DateTime.Parse("2003-09-01"), Birthday=DateTime.Parse("1991-03-01")},
-            new Student{Name="Nino Olivetto",EnrollmentDate=DateTime.Parse("2005-09-01"), Birthday=DateTime.Parse("1992-03-01")}
+            new Student{Name="Carson Alexander",EnrollmentDate=DateTime.Parse("2005-09-01"), Birthday=DateTime.Parse("1995-09-01"), CourseID=1},
+            new Student{Name="Meredith Alonso",EnrollmentDate=DateTime.Parse("2002-09-01"), Birthday=DateTime.Parse("1995-08-01"), CourseID=3},
+            new Student{Name="Arturo Anand",EnrollmentDate=DateTime.Parse("2003-09-01"), Birthday=DateTime.Parse("1995-05-01"), CourseID=1},
+            new Student{Name="Gytis Barzdukas",EnrollmentDate=DateTime.Parse("2002-09-01"), Birthday=DateTime.Parse("1993-09-01"), CourseID=2},
+            new Student{Name="Yan Li",EnrollmentDate=DateTime.Parse("2002-09-01"), Birthday=DateTime.Parse("1992-09-01"), CourseID=2},
+            new Student{Name="Peggy Justice",EnrollmentDate=DateTime.Parse("2001-09-01"), Birthday=DateTime.Parse("1999-09-07"), CourseID=3},
+            new Student{Name="Laura Norman",EnrollmentDate=DateTime.Parse("2003-09-01"), Birthday=DateTime.Parse("1991-03-01"), CourseID=1},
+            new Student{Name="Nino Olivetto",EnrollmentDate=DateTime.Parse("2005-09-01"), Birthday=DateTime.Parse("1992-03-01"), CourseID=2}
             };
             students.ForEach(s => context.Students.Add(s));
             context.SaveChanges();
@@ -35,13 +44,13 @@ namespace UniversityManager.DAL
 
             var subjects = new List<Subject>
             {
-            new Subject{SubjectID=1050,Title="Chemistry",Credits=3, TeacherID=1},
-            new Subject{SubjectID=4022,Title="Microeconomics",Credits=3, TeacherID=2},
-            new Subject{SubjectID=4041,Title="Macroeconomics",Credits=3, TeacherID=2},
-            new Subject{SubjectID=1045,Title="Calculus",Credits=4, TeacherID=1},
-            new Subject{SubjectID=3141,Title="Trigonometry",Credits=4, TeacherID=4},
-            new Subject{SubjectID=2021,Title="Composition",Credits=3, TeacherID=2},
-            new Subject{SubjectID=2042,Title="Literature",Credits=4, TeacherID=2}
+            new Subject{SubjectID=1050,Title="Chemistry",Credits=3, TeacherID=1, CourseID=1},
+            new Subject{SubjectID=4022,Title="Microeconomics",Credits=3, TeacherID=2, CourseID=1},
+            new Subject{SubjectID=4041,Title="Macroeconomics",Credits=3, TeacherID=2, CourseID=1},
+            new Subject{SubjectID=1045,Title="Calculus",Credits=4, TeacherID=1, CourseID=2},
+            new Subject{SubjectID=3141,Title="Trigonometry",Credits=4, TeacherID=4, CourseID=2},
+            new Subject{SubjectID=2021,Title="Composition",Credits=3, TeacherID=2, CourseID=3},
+            new Subject{SubjectID=2042,Title="Literature",Credits=4, TeacherID=2, CourseID=3}
             };
             subjects.ForEach(s => context.Subjects.Add(s));
             context.SaveChanges();
