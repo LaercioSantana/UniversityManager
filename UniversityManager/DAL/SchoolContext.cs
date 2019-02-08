@@ -19,5 +19,7 @@ namespace UniversityManager.DAL
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
         }
+
+        public System.Data.Entity.DbSet<UniversityManager.Models.Teacher> Teachers { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using UniversityManager.Models;
 
 namespace UniversityManager.DAL
 {
-    public class SchoolInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<SchoolContext>
+    public class SchoolInitializer : System.Data.Entity. DropCreateDatabaseAlways<SchoolContext>
     {
         protected override void Seed(SchoolContext context)
         {
@@ -19,18 +19,29 @@ namespace UniversityManager.DAL
             new Student{Name="Laura Norman",EnrollmentDate=DateTime.Parse("2003-09-01"), Birthday=DateTime.Parse("1991-03-01")},
             new Student{Name="Nino Olivetto",EnrollmentDate=DateTime.Parse("2005-09-01"), Birthday=DateTime.Parse("1992-03-01")}
             };
-
             students.ForEach(s => context.Students.Add(s));
             context.SaveChanges();
+
+            var teachers = new List<Teacher>
+            {
+            new Teacher{Name="Ewan Kemp",Remuneration=2000, Birthday=DateTime.Parse("1975-09-01")},
+            new Teacher{Name="Georgie Lang",Remuneration=3000, Birthday=DateTime.Parse("1985-08-01")},
+            new Teacher{Name="Wilfred Hanna",Remuneration=5000, Birthday=DateTime.Parse("1965-05-01")},
+            new Teacher{Name="Milo Hartman",Remuneration=8000, Birthday=DateTime.Parse("1943-09-01")},
+            new Teacher{Name="Gerald Jenkins",Remuneration=4000, Birthday=DateTime.Parse("1952-09-01")},
+            };
+            teachers.ForEach(t => context.Teachers.Add(t));
+            context.SaveChanges();
+
             var subjects = new List<Subject>
             {
-            new Subject{SubjectID=1050,Title="Chemistry",Credits=3,},
-            new Subject{SubjectID=4022,Title="Microeconomics",Credits=3,},
-            new Subject{SubjectID=4041,Title="Macroeconomics",Credits=3,},
-            new Subject{SubjectID=1045,Title="Calculus",Credits=4,},
-            new Subject{SubjectID=3141,Title="Trigonometry",Credits=4,},
-            new Subject{SubjectID=2021,Title="Composition",Credits=3,},
-            new Subject{SubjectID=2042,Title="Literature",Credits=4,}
+            new Subject{SubjectID=1050,Title="Chemistry",Credits=3, TeacherID=1},
+            new Subject{SubjectID=4022,Title="Microeconomics",Credits=3, TeacherID=2},
+            new Subject{SubjectID=4041,Title="Macroeconomics",Credits=3, TeacherID=2},
+            new Subject{SubjectID=1045,Title="Calculus",Credits=4, TeacherID=1},
+            new Subject{SubjectID=3141,Title="Trigonometry",Credits=4, TeacherID=4},
+            new Subject{SubjectID=2021,Title="Composition",Credits=3, TeacherID=2},
+            new Subject{SubjectID=2042,Title="Literature",Credits=4, TeacherID=2}
             };
             subjects.ForEach(s => context.Subjects.Add(s));
             context.SaveChanges();

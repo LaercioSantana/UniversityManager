@@ -7,6 +7,7 @@ namespace UniversityManager.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int SubjectID { get; set; }
+        public int TeacherID { get; set; }
         public string Title { get; set; }
         public int Credits { get; set; }
 
