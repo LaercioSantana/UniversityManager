@@ -139,6 +139,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\EnrollmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\SubjectController.cs" />
@@ -219,6 +220,11 @@
     <Content Include="Views\Subject\Edit.cshtml" />
     <Content Include="Views\Subject\Index.cshtml" />
     <Content Include="Views\Shared\_SelectTeacher.cshtml" />
+    <Content Include="Views\Enrollment\Create.cshtml" />
+    <Content Include="Views\Enrollment\Delete.cshtml" />
+    <Content Include="Views\Enrollment\Details.cshtml" />
+    <Content Include="Views\Enrollment\Edit.cshtml" />
+    <Content Include="Views\Enrollment\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
