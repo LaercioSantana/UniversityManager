@@ -39,7 +39,7 @@
             @item.Subjects.Select((s) => s.Teacher).Distinct().Count()
         </td>
         <td>
-           TODO
+            @((item.Subjects.Average((s) => s.Enrollments.Average((e) => e.Grade)) ?? 0).ToString("0.##"))
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
