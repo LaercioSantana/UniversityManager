@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<UniversityManager.Models.Course>
+@using UniversityManager.Models
 
 @{
     ViewBag.Title = "Index";
@@ -14,6 +15,15 @@
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
+        <th>
+            Students
+        </th>
+        <th>
+            Teachers
+        </th>
+        <th>
+            Average grade
+        </th>
         <th></th>
     </tr>
 
@@ -23,9 +33,18 @@
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @item.Students.Count()
+        </td>
+        <td>
+            @item.Subjects.Select((s) => s.Teacher).Distinct().Count()
+        </td>
+        <td>
+           TODO
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
         </td>
     </tr>
 }
