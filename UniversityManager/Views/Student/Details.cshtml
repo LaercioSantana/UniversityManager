@@ -1,5 +1,10 @@
 ﻿@model UniversityManager.Models.Student
 
+
+@section Styles {
+    <link href="@Url.Content("~/Content/student/details.css")" rel="stylesheet" type="text/css" />
+}
+
 @{
     ViewBag.Title = "Details";
 }
@@ -9,6 +14,10 @@
 <div>
     <h4>Student</h4>
     <hr />
+    <div class="actions">
+        <p><a href="@Url.Action("Index")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> Back to List</a></p>
+        <p><a href="@Url.Action("Edit", new { id = Model.StudentID })" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-edit"></span> Edit </a></p>
+    </div>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.LastName)
