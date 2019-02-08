@@ -1,0 +1,9 @@
+﻿@model UniversityManager.ViewModels.SelectCourseViewModel
+
+<select name="CourseID" class="custom-select">
+    <option value="" disabled selected>Select course</option>
+    @foreach (var course in Model.Courses)
+    {
+        <option value="@course.ID" @(course.ID == Model.SelectedCourseID ? "selected" : "" )>@course.Name</option>
+    }
+</select>

@@ -78,12 +78,17 @@ namespace UniversityManager.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.CourseName = student.Course.Name;
+
             return View(student);
         }
 
         // GET: Student/Create
         public ActionResult Create()
         {
+            ViewBag.Courses = db.Courses.ToList();
+
             return View();
         }
 
@@ -92,7 +97,7 @@ namespace UniversityManager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Name, Birthday")] Student student)
+        public ActionResult Create([Bind(Include = "Name, Birthday, CourseID")] Student student)
         {
             try
             {
@@ -115,6 +120,8 @@ namespace UniversityManager.Controllers
         // GET: Student/Edit/5
         public ActionResult Edit(int? id)
         {
+            ViewBag.Courses = db.Courses.ToList();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -124,6 +131,9 @@ namespace UniversityManager.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.SelectedCourseID = student.CourseID;
+
             return View(student);
         }
 
