@@ -13,16 +13,14 @@
 
 <h2>Students</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-
 <div class="filter-header">
+    <a href="@Url.Action("Create")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Create New </a>
+
     @using (Html.BeginForm("Index", "Student", FormMethod.Get))
     {
         <p>
             Find by name: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-            <input type="submit" value="Search" />
+            <input type="submit" value="Search" class="btn btn-primary btn-sm" />
             <input type="hidden" name="pageSize" value="@ViewBag.pageSize" />
         </p>
     }
