@@ -79,7 +79,7 @@ namespace UniversityManager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Remuneration,Name,Birthday")] Teacher teacher)
+        public ActionResult Edit([Bind(Include = "ID,Remuneration,Name,Birthday")] Teacher teacher) //TODO: remove ID from bind for security
         {
             if (ModelState.IsValid)
             {

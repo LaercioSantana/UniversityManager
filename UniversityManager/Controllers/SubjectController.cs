@@ -50,7 +50,7 @@ namespace UniversityManager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SubjectID, TeacherID,CourseID,Title,Credits")] Subject subject)
+        public ActionResult Create([Bind(Include = "TeacherID,CourseID,Title,Credits")] Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace UniversityManager.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SubjectID, TeacherID,CourseID,Title,Credits")] Subject subject)
+        public ActionResult Edit([Bind(Include = "SubjectID, TeacherID,CourseID,Title,Credits")] Subject subject) //TODO: remove ID from bind for security
         {
             if (ModelState.IsValid)
             {
