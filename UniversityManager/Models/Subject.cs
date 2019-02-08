@@ -13,5 +13,7 @@ namespace UniversityManager.Models
         public int Credits { get; set; }
 
         public virtual ICollection<Enrollment> Enrollments { get; set; }
+        public virtual Course Course { get; set; }
+        public virtual Teacher Teacher { get; set; }
     }
 }
